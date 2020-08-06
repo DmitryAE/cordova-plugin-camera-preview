@@ -50,17 +50,11 @@
     self.cameraRenderController.view.frame = CGRectMake(x, y, width, height);
     self.cameraRenderController.delegate = self;
 
-    [self.viewController addChildViewController:self.cameraRenderController];
-
     if (toBack) {
       // display the camera below the webview
 
-      // make transparent
-      self.webView.opaque = NO;
-      self.webView.backgroundColor = [UIColor clearColor];
-
-      [self.viewController.view addSubview:self.cameraRenderController.view];
-      [self.viewController.view bringSubviewToFront:self.webView];
+      [self.webView.superview addSubview:self.cameraRenderController.view];
+      [self.webView.superview bringSubviewToFront:self.webView];
     } else {
       self.cameraRenderController.view.alpha = alpha;
       [self.viewController.view insertSubview:self.cameraRenderController.view aboveSubview:self.webView];
