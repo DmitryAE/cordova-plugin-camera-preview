@@ -53,8 +53,12 @@
     if (toBack) {
       // display the camera below the webview
 
-      [self.webView.superview addSubview:self.cameraRenderController.view];
-      [self.webView.superview bringSubviewToFront:self.webView];
+      // capacitor "npx cap sync" changes all occurence of "self.webView.superview" to "self.viewController.view"
+      // super weird!!
+      UIView* wv = self.webView;
+
+      [wv.superview addSubview:self.cameraRenderController.view];
+      [wv.superview bringSubviewToFront:self.webView];
     } else {
       self.cameraRenderController.view.alpha = alpha;
       [self.viewController.view insertSubview:self.cameraRenderController.view aboveSubview:self.webView];
