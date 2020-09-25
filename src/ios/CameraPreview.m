@@ -53,7 +53,7 @@
     if (toBack) {
       // display the camera below the webview
 
-      // capacitor "npx cap sync" changes all occurence of "self.webView.superview" to "self.viewController.view"
+      // capacitor "npx cap sync" changes all occurence of "self . webView . superview" to "self.viewController.view"
       // super weird!!
       UIView* wv = self.webView;
 
